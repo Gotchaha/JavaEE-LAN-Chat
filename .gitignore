@@ -31,3 +31,4 @@
 hs_err_pid*
 web/WEB-INF/classes/
 web/WEB-INF/lib/
+!/JavaEE-LAN-Chat.iml
