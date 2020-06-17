@@ -1,1 +1,22 @@
-我尼玛是不朽的 sdadad
+需要先配置好.gitignore文件 保证没有不必要的文件push到远程仓库，例如.iml等idea配置文件，造成协作上的困难
+.gitignore只能忽略未被git跟踪的文件，所以如果忽略未生效得先在忽略之前删除git本地缓存：
+git rm -r --cached .
+git add .
+git commit -m 'delete *.iml'
+
+另删除远程仓库内容而不删除本地内容，使用
+1.预览将要删除的文件
+git rm -r -n --cached 文件/文件夹名称
+加上 -n 这个参数，执行命令时，是不会删除任何文件，而是展示此命令要删除的文件列表预览。
+
+2.确认无误删除
+git rm -r --cached 文件/文件夹名称
+
+3.提交到本地并推送到远程服务器
+git commit -m "提交说明"
+git push origin master
+
+由于pull会覆盖本地未提交内容使用：
+git stash 保存信息
+pull
+git stash pop 还原现场
