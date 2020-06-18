@@ -14,4 +14,6 @@ public interface IUserDao {
     void update(NhManageUser user);
 
     void insert(NhManageUser user);
+
+    NhManageUser findUserByNameAndPass(String username, String password);
 }

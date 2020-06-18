@@ -11,7 +11,7 @@ public class ConnUtil {
 
     public static DataSource getDataSource(){
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.jc.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/tm");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
