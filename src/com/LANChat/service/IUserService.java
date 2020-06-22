@@ -17,4 +17,5 @@ public interface IUserService {
     void insert(NhManageUser user);
 
     boolean login(String username, String password);
+    void del(NhManageUser user);
 }

@@ -22,13 +22,13 @@ public class UserDao implements IUserDao{
         List<Object> param = new ArrayList<>();
         String sql = "SELECT u.*,d.name departName from nh_manage_user u left join nh_manage_department d " +
                 "on d.id=u.department_id where 1=1";
-        if(user!=null && user.getUsername()!=null &&!user.getUsername().equals("")){
+        if(user!=null && user.getUser_name()!=null &&!user.getUser_name().equals("")){
             sql+=" and u.user_name like concat('%',?,'%') ";
-            param.add(user.getUsername());
+            param.add(user.getUser_name());
         }
-        if(user!=null && user.getRealname()!=null && !user.getRealname().equals("")){
+        if(user!=null && user.getReal_name()!=null && !user.getReal_name().equals("")){
             sql+=" and u.real_name like concat('%',?,'%') ";
-            param.add(user.getRealname());
+            param.add(user.getReal_name());
         }
         sql+="  limit ?,? ";
         param.add(from);
@@ -47,16 +47,16 @@ public class UserDao implements IUserDao{
         int i = 0;
         String sql = "select count(0) from nh_manage_user";
         List<Object> param = new ArrayList<>();
-        if(user!=null && user.getUsername()!=null &&!user.getUsername().equals("")){
+        if(user!=null && user.getUser_name()!=null &&!user.getUser_name().equals("")){
             sql+=" and user_name like concat('%',?,'%') ";
-            param.add(user.getUsername());
+            param.add(user.getUser_name());
         }
-        if(user!=null && user.getRealname()!=null && !user.getRealname().equals("")){
+        if(user!=null && user.getReal_name()!=null && !user.getReal_name().equals("")){
             sql+=" and real_name like concat('%',?,'%') ";
-            param.add(user.getRealname());
+            param.add(user.getReal_name());
         }
         try {
-            i = Integer.parseInt(qr.query(sql,new ScalarHandler(),param.toArray()).toString());
+            i = Integer.parseInt(qr.query(sql,new ScalarHandler<>(),param.toArray()).toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -77,15 +77,20 @@ public class UserDao implements IUserDao{
 
     @Override
     public void update(NhManageUser user) {
-        String sql = "";
+        String sql = "update nh_manage_user set user_name=?, password=?, real_name=?, department_id=?,  gender=?, phone=?, email=?,  address=?, work_phone=?,  update_time=now() where id=?";
+        Object[] param = {user.getUser_name(),user.getPassword(),user.getReal_name(),user.getDepartment_id(),user.getGender(),user.getPhone(),user.getEmail(),user.getAddress(),user.getWork_phone(),user.getId()};
+        try {
+            qr.update(sql,param);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void insert(NhManageUser user) {
-        String sql = "INSERT INTO nh_manage_user (user_name, password, real_name, department_id, position, " +
-                "gender, phone, email, delete_flag, address, work_phone, memo, update_time) VALUES ( ?, ?, ?, ?, ?, ?,?, ?,?, ?, ?, ?,now())";
-        Object[] param = {user.getUsername(),user.getPassword(),user.getRealname(),user.getDepartmentId(),user
-                .getPosition(),user.getGender(),user.getPhone(),user.getEmail(),user.getDeleteFlag(),user.getAddress(),user.getWorkPhone(),user.getMemo()};
+        String sql = "INSERT INTO nh_manage_user (user_name, password, real_name, department_id,  " +
+                "gender, phone, email, address, work_phone, update_time) VALUES ( ?, ?, ?, ?,?,?, ?,?,?,now())";
+        Object[] param = {user.getUser_name(),user.getPassword(),user.getReal_name(),user.getDepartment_id(),user.getGender(),user.getPhone(),user.getEmail(),user.getAddress(),user.getWork_phone()};
         try {
             qr.update(sql,param);
         } catch (SQLException e) {
@@ -103,5 +108,17 @@ public class UserDao implements IUserDao{
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public void del(NhManageUser user) {
+        String sql = "DELETE FROM nh_manage_user WHERE id=?";
+        Object[] param ={user.getId()};
+        try {
+            qr.update(sql,param);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

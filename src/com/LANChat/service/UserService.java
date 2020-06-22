@@ -41,4 +41,9 @@ public class UserService implements IUserService {
         }
         return false;
     }
+
+    @Override
+    public void del(NhManageUser user) {
+        userDao.del(user);
+    }
 }

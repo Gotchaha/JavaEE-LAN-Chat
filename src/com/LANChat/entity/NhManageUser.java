@@ -4,20 +4,28 @@ package com.LANChat.entity;
 public class NhManageUser extends BaseBean{
 
   private long id;
-  private String userName;
+  private String user_name;
   private String password;
-  private String realName;
-  private long departmentId;
+  private String real_name;
+  private long department_id;
   private String position;
   private long gender;
   private String phone;
   private String email;
-  private long deleteFlag;
+  private long delete_flag;
   private String address;
-  private String workPhone;
+  private String work_phone;
   private String memo;
-  private String updateTime;
+  private String update_time;
+  private String departName;
 
+  public String getDepartName() {
+    return departName;
+  }
+
+  public void setDepartName(String departName) {
+    this.departName = departName;
+  }
 
   public long getId() {
     return id;
@@ -27,15 +35,13 @@ public class NhManageUser extends BaseBean{
     this.id = id;
   }
 
-
-  public String getUsername() {
-    return userName;
+  public String getUser_name() {
+    return user_name;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUser_name(String user_name) {
+    this.user_name = user_name;
   }
-
 
   public String getPassword() {
     return password;
@@ -45,24 +51,21 @@ public class NhManageUser extends BaseBean{
     this.password = password;
   }
 
-
-  public String getRealname() {
-    return realName;
+  public String getReal_name() {
+    return real_name;
   }
 
-  public void setRealName(String realName) {
-    this.realName = realName;
+  public void setReal_name(String real_name) {
+    this.real_name = real_name;
   }
 
-
-  public long getDepartmentId() {
-    return departmentId;
+  public long getDepartment_id() {
+    return department_id;
   }
 
-  public void setDepartmentId(long departmentId) {
-    this.departmentId = departmentId;
+  public void setDepartment_id(long department_id) {
+    this.department_id = department_id;
   }
-
 
   public String getPosition() {
     return position;
@@ -72,7 +75,6 @@ public class NhManageUser extends BaseBean{
     this.position = position;
   }
 
-
   public long getGender() {
     return gender;
   }
@@ -80,7 +82,6 @@ public class NhManageUser extends BaseBean{
   public void setGender(long gender) {
     this.gender = gender;
   }
-
 
   public String getPhone() {
     return phone;
@@ -90,7 +91,6 @@ public class NhManageUser extends BaseBean{
     this.phone = phone;
   }
 
-
   public String getEmail() {
     return email;
   }
@@ -99,15 +99,13 @@ public class NhManageUser extends BaseBean{
     this.email = email;
   }
 
-
-  public long getDeleteFlag() {
-    return deleteFlag;
+  public long getDelete_flag() {
+    return delete_flag;
   }
 
-  public void setDeleteFlag(long deleteFlag) {
-    this.deleteFlag = deleteFlag;
+  public void setDelete_flag(long delete_flag) {
+    this.delete_flag = delete_flag;
   }
-
 
   public String getAddress() {
     return address;
@@ -117,15 +115,13 @@ public class NhManageUser extends BaseBean{
     this.address = address;
   }
 
-
-  public String getWorkPhone() {
-    return workPhone;
+  public String getWork_phone() {
+    return work_phone;
   }
 
-  public void setWorkPhone(String workPhone) {
-    this.workPhone = workPhone;
+  public void setWork_phone(String work_phone) {
+    this.work_phone = work_phone;
   }
-
 
   public String getMemo() {
     return memo;
@@ -135,13 +131,11 @@ public class NhManageUser extends BaseBean{
     this.memo = memo;
   }
 
-
-  public String getUpdateTime() {
-    return updateTime;
+  public String getUpdate_time() {
+    return update_time;
   }
 
-  public void setUpdateTime(String updateTime) {
-    this.updateTime = updateTime;
+  public void setUpdate_time(String update_time) {
+    this.update_time = update_time;
   }
-
 }

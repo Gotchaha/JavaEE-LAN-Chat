@@ -4,6 +4,8 @@ import com.LANChat.entity.NhManageUser;
 
 import java.util.List;
 
+
+
 public interface IUserDao {
     List<NhManageUser> findUserByCondition(NhManageUser user);
 
@@ -16,4 +18,6 @@ public interface IUserDao {
     void insert(NhManageUser user);
 
     NhManageUser findUserByNameAndPass(String username, String password);
+    void del(NhManageUser user);
 }
+

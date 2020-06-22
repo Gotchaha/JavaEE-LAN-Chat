@@ -66,6 +66,7 @@
         //删除
         function del(id){
             //示范一个公告层
+            var layer = layui.layer;
             layer.open({
                 type: 1
                 ,title: false //不显示标题栏
@@ -76,10 +77,24 @@
                 ,btn: ['确定删除', '关闭']
                 ,btnAlign: 'c'
                 ,moveType: 1 //拖拽模式，0或者1
-                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你知道吗？亲！<br>layer ≠ layui<br><br>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui<br><br>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。<br><br>我们此后的征途是星辰大海 ^_^</div>'
+                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你确定要删除吗？</div>'
                 ,yes:function () {
-                    alert(123);
-                    //ajax调用后台删除数据
+                    alert('删除成功');
+                    $.ajax({
+                        /*请求类型*/
+                        method:"post",
+                        /*请求地址*/
+                        url: "/web09/userServlet?method=delUser",
+                        /*返回格式化*/
+                        dataType:"json",
+                        data:{id:id},
+                        /*回调*/
+                        success:function(data) {
+
+                            console.log(data);
+                            layer.closeAll();
+                        }
+                    });
 
                 }
             });

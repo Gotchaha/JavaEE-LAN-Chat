@@ -49,6 +49,14 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    public void delUser(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("id");
+        NhManageUser user = new NhManageUser();
+        user.setId(Long.parseLong(id));
+        userService.del(user);
+
+    }
+
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -56,19 +64,22 @@ public class UserServlet extends HttpServlet {
             HttpSession session =  request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("role",1);
-            request.getRequestDispatcher("/WEB-INF/jsp/success.jsp").forward(request,response);//套的主页
+            request.getRequestDispatcher("chat.jsp").forward(request,response);
         }else{
             request.getRequestDispatcher("/WEB-INF/jsp/user_add_mod.jsp").forward(request,response);//添加
         }
     }
-    public void root_login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String username_root = request.getParameter("username");
-        String password_root= request.getParameter("password");
-        if(userService.login(username_root="admin",password_root="root")){
 
-            request.getRequestDispatcher("/WEB-INF/jsp/user_list.jsp").forward(request,response);//用户管理
+    public void root_login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if(userService.login(username="admin",password="root")){
+            HttpSession session =  request.getSession();
+            session.setAttribute("username",username);
+            session.setAttribute("role",1);
+            request.getRequestDispatcher("/WEB-INF/jsp/user_list.jsp").forward(request,response);
         }else{
-            request.getRequestDispatcher("/web/index.jsp").forward(request,response);//返回登录界面
+            request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request,response);//添加
         }
     }
 
@@ -140,13 +151,6 @@ public class UserServlet extends HttpServlet {
         System.out.println("数据======" + json);
         response.getWriter().print(json);
     }
-
-//    public void delUser(HttpServletRequest request, HttpServletResponse response) {
-//        String id = request.getParameter("id");
-//        NhManageUser user = new NhManageUser();
-//        user.setId(Long.parseLong(id));
-//        userService.del(user);
-//   }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
