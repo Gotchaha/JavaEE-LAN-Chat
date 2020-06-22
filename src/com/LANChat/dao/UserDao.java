@@ -4,8 +4,6 @@ import com.LANChat.util.ConnUtil;
 import org.apache.commons.dbutils.QueryRunner;
 
 import com.LANChat.entity.NhManageUser;
-import com.LANChat.util.ConnUtil;
-import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
@@ -58,7 +56,7 @@ public class UserDao implements IUserDao{
             param.add(user.getRealname());
         }
         try {
-            i = Integer.parseInt(qr.query(sql,new ScalarHandler<>(),param.toArray()).toString());
+            i = Integer.parseInt(qr.query(sql,new ScalarHandler(),param.toArray()).toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }

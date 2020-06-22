@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+#showMessage {
+	border: 1px solid black;
+	width: 480px;
+	height: 380px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: scroll;
+	overflow-x:hidden;
+	
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+#sendMessage {
+	border: 1px solid black;
+	width: 480px;
+	height: 80px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#buttonDiv {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

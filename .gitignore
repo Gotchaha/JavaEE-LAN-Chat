@@ -31,3 +31,4 @@
 hs_err_pid*
 web/WEB-INF/classes/
 web/WEB-INF/lib/
+/src/com/LANChat/util/ConnUtil.java
