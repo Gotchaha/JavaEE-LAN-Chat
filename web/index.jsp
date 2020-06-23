@@ -36,7 +36,7 @@
   </div>
   <div class="clear"> </div>
   <div class="avtar"><img src="images/avtar.png" height="100" width="100" /></div>
-  <form action="${path}/userServlet?method=login" method="post">
+  <form action="${path}/userServlet" method="post">
     <input type="hidden" name="method" value="login">
     <input type="text" class="text" name="username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'username';}" >
     <div class="key"><input type="password" name="password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'password';}"></div>
@@ -55,7 +55,7 @@
     <label class="lbl-3"> </label>
   </div>
   <div class="clear"> </div>
-  <form action="${path}/userServlet?method=root_login" method="post">
+  <form action="${path}/userServlet" method="post">
     <input type="hidden" name="method" value="root_login">
     <input type="text" class="text" name="username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'username';}" >
     <div class="key"><input type="password" name="password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'password';}"></div>
